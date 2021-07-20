@@ -14,11 +14,9 @@
 	<name>project</name>
 	<description>Application Java Spring</description>
 	<properties>
-		<java.version>11</java.version>
-		<sonar.projectKey>brunoViniciusTiCa_Application-Java-Spring</sonar.projectKey>
+		<sonar.projectKey>brunoViniciusTiCa_Java-Sprint-Back-End</sonar.projectKey>
 		<sonar.organization>brunoviniciustica</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.moduleKey>{project.artifactId}:{project.artifactId}</sonar.moduleKey>
 	</properties>
 	<dependencies>
 		<dependency>
