@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -41,4 +42,40 @@ public class CourseController {
         return new ResponseEntity<>(courseService.saveCourse(courseForm), HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<CourseForm> listId(@PathVariable Long id){
+        CourseForm courseForm = courseService.findByIdCourse(id);
+        if(courseForm != null) {
+            return new ResponseEntity<>(courseForm, null, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(courseForm, null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<CourseForm> updateVeiculo(long id, CourseForm courseForm) {
+        CourseForm course = courseService.updateCourse(id, courseForm);
+        if(course != null) {
+            return new ResponseEntity<>(course, null, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(course, null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    @Transactional
+    @Validated
+    public ResponseEntity<CourseForm> deleteCourse(long id) {
+        CourseForm course = courseService.deleteCourse(id);
+        if (course != null) {
+            return new ResponseEntity<>(course, null, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(course, null, HttpStatus.NOT_FOUND);
+        }
+    }
 }

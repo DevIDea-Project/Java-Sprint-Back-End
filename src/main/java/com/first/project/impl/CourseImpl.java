@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseImpl implements CourseService {
@@ -29,5 +30,39 @@ public class CourseImpl implements CourseService {
     public List<CourseForm> findAll() {
         List<Course> listCourse = courseRepository.findAll();
         return courseForm.convertDomainToDto(listCourse);
+    }
+
+    @Override
+    public CourseForm findByIdCourse(Long id) {
+        Optional<Course> m1 = courseRepository.findById(id);
+        if (m1.isPresent()) {
+            return CourseForm.convertDomainToType(m1.get());
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public CourseForm updateCourse(Long id, CourseForm CourseForm) {
+        Optional<Course> courseDomain = courseRepository.findById(id);
+        if (courseDomain.isPresent()) {
+            Course courseSave = courseDomain.get();
+            courseSave.setName(courseForm.getName());
+            return courseForm.convertDomainToType(courseRepository.saveAndFlush(courseSave));
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public CourseForm deleteCourse(Long id) {
+        Optional<Course> course1 = courseRepository.findById(id);
+        if (course1.isPresent()) {
+            Course course2 = course1.get();
+            courseRepository.delete(course2);
+            return courseForm.convertDomainToType(course2);
+        } else {
+            return null;
+        }
     }
 }
