@@ -12,4 +12,10 @@ public interface CourseService {
 
     public List<CourseForm> findAll();
 
+    public CourseForm findByIdCourse(Long id);
+
+    public CourseForm updateCourse(Long id, CourseForm CourseForm);
+
+    public CourseForm deleteCourse(Long id);
+
 }

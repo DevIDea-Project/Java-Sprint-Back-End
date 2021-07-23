@@ -21,7 +21,7 @@ public class CourseForm {
         return listaType;
     }
 
-    public CourseForm convertDomainToType(Course courseDomain) {
+    public static CourseForm convertDomainToType(Course courseDomain) {
         CourseForm cursoType = new CourseForm();
         cursoType.setId(courseDomain.getId());
         cursoType.setName(courseDomain.getName());
