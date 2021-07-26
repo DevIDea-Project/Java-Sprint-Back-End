@@ -1,7 +1,6 @@
 package com.first.project.impl;
 
 import com.first.project.domain.User;
-import com.first.project.exception.UserException;
 import com.first.project.form.UserForm;
 import com.first.project.repository.UserRepository;
 import com.first.project.service.UserService;
@@ -22,11 +21,7 @@ public class UserImpl implements UserService {
     private UserForm userForm;
 
     @Override
-    public UserForm saveUser(UserForm userType) throws UserException {
-        Optional<User> userExistents = userRepository.findByEmail(userType.getEmail());
-        if(userExistents.isPresent()) {
-            throw new UserException("E-mail já associado a um usuário");
-        }
+    public UserForm saveUser(UserForm userType) {
         userType.setSenha(new BCryptPasswordEncoder().encode(userType.getSenha()));
         User userSave = userRepository.save(userForm.convertDtoToDomain(userType));
         return userForm.convertDomainToDto(userSave);

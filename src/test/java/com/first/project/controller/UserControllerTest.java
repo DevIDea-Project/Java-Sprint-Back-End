@@ -84,7 +84,7 @@ class UserControllerTest {
 
     @Test
     @Order(5)
-    void deveDeletarUsuarioComSucesso() throws Exception {
+    void deveDeletarUsuarioComSucesso() {
         Integer idUsuario = 1;
         ResponseEntity<UserForm> usuarioDel = userController.deletaUser(idUsuario.longValue());
         assertEquals(HttpStatus.OK, usuarioDel.getStatusCode());
@@ -94,7 +94,7 @@ class UserControllerTest {
 
     @Test
     @Order(6)
-    void deletarUsuarioInexistente() throws Exception {
+    void deletarUsuarioInexistente() {
         Integer idUsuario = 1000;
         ResponseEntity<UserForm> usuarioDel = userController.deletaUser(idUsuario.longValue());
         assertEquals(HttpStatus.NOT_FOUND, usuarioDel.getStatusCode());
