@@ -20,23 +20,23 @@ public class CourseForm {
     private String name;
 
     public static List<CourseForm> convertDomainToDto(List<Course> course) {
-        List<CourseForm> listaType = new ArrayList<>();
-        course.forEach(cursoDomain -> listaType.add(convertDomainToType(cursoDomain)));
-        return listaType;
+        List<CourseForm> listType = new ArrayList<>();
+        course.forEach(courseDomain -> listType.add(convertDomainToType(courseDomain)));
+        return listType;
     }
 
     public static CourseForm convertDomainToType(Course courseDomain) {
-        CourseForm cursoType = new CourseForm();
-        cursoType.setId(courseDomain.getId());
-        cursoType.setName(courseDomain.getName());
+        CourseForm courseType = new CourseForm();
+        courseType.setId(courseDomain.getId());
+        courseType.setName(courseDomain.getName());
 
-        return cursoType;
+        return courseType;
     }
 
-    public static Course convertTypeToDomain(CourseForm cursoType) {
+    public static Course convertTypeToDomain(CourseForm course) {
         Course courseDomain = new Course();
-        courseDomain.setId(cursoType.getId());
-        courseDomain.setName(cursoType.getName());
+        courseDomain.setId(course.getId());
+        courseDomain.setName(course.getName());
 
         return courseDomain;
     }
