@@ -60,6 +60,7 @@ class CourseControllersTest {
         Integer id = 1;
         ResponseEntity<CourseForm> response = courseController.listCourseId(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test

@@ -38,17 +38,18 @@ public class AuthControllerTest {
     }
 
 
-//    @Test
-//    public void toReturn200Sucess() {
-//
-//        LoginForm login = new LoginForm();
-//        login.setEmail("brunoviniciustica@gmail.com");
-//        login.setSenha("123456");
-//
-//        ResponseEntity<TokenForm> token = authController.authentication(login);
-//
-//        assertEquals(HttpStatus.OK, token.getStatusCode());
-//
-//    }
+    @Test
+    public void toReturn200Sucess() {
+
+        LoginForm login = new LoginForm();
+        login.setEmail("priii@gmail.com");
+        login.setSenha("123456");
+
+        ResponseEntity<TokenForm> token = authController.authentication(login);
+        System.out.println("Result -> " + token);
+
+        assertEquals(HttpStatus.OK, token.getStatusCode());
+
+    }
 
 }
