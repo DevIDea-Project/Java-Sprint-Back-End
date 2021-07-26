@@ -30,10 +30,10 @@ public class AuthController {
 
     @PostMapping
     public ResponseEntity<TokenForm> authentication (@RequestBody @Valid LoginForm form) {
-        UsernamePasswordAuthenticationToken dadosUser = form.converter();
+        UsernamePasswordAuthenticationToken dateUser = form.converter();
 
         try {
-            Authentication authentication =  authManager.authenticate(dadosUser);
+            Authentication authentication =  authManager.authenticate(dateUser);
             String token = tokenService.gerarToken(authentication);
             return ResponseEntity.ok(new TokenForm(token, "Bearer"));
         }
