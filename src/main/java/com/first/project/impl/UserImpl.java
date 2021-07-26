@@ -22,7 +22,6 @@ public class UserImpl implements UserService {
 
     @Override
     public UserForm saveUser(UserForm userType) {
-        Optional<User> userExistente = userRepository.findByEmail(userType.getEmail());
         userType.setSenha(new BCryptPasswordEncoder().encode(userType.getSenha()));
         User userSave = userRepository.save(userForm.convertDtoToDomain(userType));
         return userForm.convertDomainToDto(userSave);
