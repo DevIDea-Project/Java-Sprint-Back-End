@@ -81,10 +81,27 @@ class CourseControllersTest {
 
     @Test
     @Order(7)
+    void returnUpdateCourseNull() {
+        Integer id = 2;
+        CourseForm newCourse = createCourseForm("JavaScript");
+        ResponseEntity<CourseForm> response = courseController.updateCourse(id.longValue(), newCourse);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    @Order(8)
     void deleteCourse() {
         Integer id = 1;
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    @Order(9)
+    void deleteCourseNull() {
+        Integer id = 2;
+        ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
 }
