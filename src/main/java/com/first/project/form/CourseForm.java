@@ -40,4 +40,5 @@ public class CourseForm {
 
         return courseDomain;
     }
+
 }

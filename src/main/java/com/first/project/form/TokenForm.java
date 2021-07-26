@@ -14,4 +14,5 @@ public class TokenForm {
         this.token = token;
         this.tipo = tipo;
     }
+
 }
