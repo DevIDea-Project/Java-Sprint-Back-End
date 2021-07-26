@@ -19,7 +19,7 @@ public class CourseForm {
     @NotBlank
     private String name;
 
-    public List<CourseForm> convertDomainToDto(List<Course> course) {
+    public static List<CourseForm> convertDomainToDto(List<Course> course) {
         List<CourseForm> listaType = new ArrayList<>();
         course.forEach(cursoDomain -> listaType.add(convertDomainToType(cursoDomain)));
         return listaType;
@@ -33,7 +33,7 @@ public class CourseForm {
         return cursoType;
     }
 
-    public Course convertTypeToDomain(CourseForm cursoType) {
+    public static Course convertTypeToDomain(CourseForm cursoType) {
         Course courseDomain = new Course();
         courseDomain.setId(cursoType.getId());
         courseDomain.setName(cursoType.getName());
