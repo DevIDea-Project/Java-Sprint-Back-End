@@ -21,10 +21,10 @@ public class CourseImpl implements CourseService {
 
 
     @Override
-    public CourseForm saveCourse(CourseForm courseForm) {
-        Course courseSave = courseRepository.save(courseForm.convertTypeToDomain(courseForm));
+    public CourseForm saveCourse(CourseForm courseType) {
+        Course courseSave = courseRepository.save(courseForm.convertTypeToDomain(courseType));
         return courseForm.convertDomainToType(courseSave);
-    };
+    }
 
     @Override
     public List<CourseForm> findAll() {
