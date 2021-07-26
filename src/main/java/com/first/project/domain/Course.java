@@ -25,6 +25,4 @@ public class Course {
     @NotNull
     private String name;
 
-    public Course() { }
-
 }
