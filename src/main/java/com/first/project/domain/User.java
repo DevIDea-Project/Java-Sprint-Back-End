@@ -1,5 +1,7 @@
 package com.first.project.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,6 +11,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "tb_user")
 public class User implements UserDetails{
     private static final long serialVersionUID = 1L;
@@ -45,42 +49,6 @@ public class User implements UserDetails{
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
-
-    public Long getId() {
-
-        return id;
-    }
-
-    public void setId(Long id) {
-
-        this.id = id;
-    }
-
-    public String getName() {
-
-        return name;
-    }
-
-    public void setName(String name) {
-
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     @Override

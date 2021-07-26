@@ -1,5 +1,10 @@
 package com.first.project.form;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class TokenForm {
 
     private String token;
@@ -9,13 +14,4 @@ public class TokenForm {
         this.token = token;
         this.tipo = tipo;
     }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
 }

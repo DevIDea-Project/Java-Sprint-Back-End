@@ -1,6 +1,8 @@
 package com.first.project.domain;
 
 import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,8 @@ import javax.persistence.Table;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "tb_course")
 public class Course {
 
@@ -20,9 +24,7 @@ public class Course {
     @NotNull
     private String name;
 
-    public Long getId() {
-        return id;
-    }
+
 
     public Course() {
 
@@ -32,17 +34,4 @@ public class Course {
         this.id = id;
         this.name = name;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 }

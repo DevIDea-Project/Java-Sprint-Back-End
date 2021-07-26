@@ -1,11 +1,15 @@
 package com.first.project.domain;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "tb_perfil")
 public class Perfil implements GrantedAuthority{
 
@@ -17,22 +21,7 @@ public class Perfil implements GrantedAuthority{
 
     private String name;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Override
     public String getAuthority() {
         return name;
     }
