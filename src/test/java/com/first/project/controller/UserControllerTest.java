@@ -33,7 +33,7 @@ public class UserControllerTest {
 
     @Test
     @Order(1)
-    public void creatUser() {
+    void creatUser() {
 
         UserForm newUser = new UserForm();
         newUser.setName("Priscilla Basto");
@@ -49,7 +49,7 @@ public class UserControllerTest {
 
     @Test
     @Order(2)
-    public void toReturn200Sucess() {
+    void toReturn200Sucess() {
 
         LoginForm login = new LoginForm();
         login.setEmail("priii@gmail.com");
@@ -62,7 +62,7 @@ public class UserControllerTest {
 
     @Test
     @Order(3)
-    public void deveriaRetornar400CasoDadosDeAutenticacaoEstejamErrados() {
+    void deveriaRetornar400CasoDadosDeAutenticacaoEstejamErrados() {
 
         LoginForm login = new LoginForm();
         login.setEmail("invalid@gmail.com");

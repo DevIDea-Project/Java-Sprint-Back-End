@@ -24,7 +24,7 @@ class CourseControllersTest {
     private CourseController courseController;
 
     @BeforeEach
-    public void configuraMock() {
+    void configuraMock() {
         openMocks(this);
     }
 
