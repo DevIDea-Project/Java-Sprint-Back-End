@@ -1,5 +1,7 @@
 package com.first.project.controller;
 
+import com.first.project.form.LoginForm;
+import com.first.project.form.TokenForm;
 import com.first.project.form.UserForm;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -26,6 +28,9 @@ public class UserControllerTest {
     @Autowired
     private UserController userController;
 
+    @Autowired
+    private AuthController authController;
+
     @Test
     @Order(1)
     public void creatUser() {
@@ -44,6 +49,33 @@ public class UserControllerTest {
 
     @Test
     @Order(2)
+    public void toReturn200Sucess() {
+
+        LoginForm login = new LoginForm();
+        login.setEmail("priii@gmail.com");
+        login.setSenha("123456");
+
+        ResponseEntity<TokenForm> token = authController.authentication(login);
+        assertEquals(HttpStatus.OK, token.getStatusCode());
+
+    }
+
+    @Test
+    @Order(3)
+    public void deveriaRetornar400CasoDadosDeAutenticacaoEstejamErrados() {
+
+        LoginForm login = new LoginForm();
+        login.setEmail("invalid@gmail.com");
+        login.setSenha("123456");
+
+        ResponseEntity<TokenForm> token = authController.authentication(login);
+
+        assertEquals(HttpStatus.BAD_REQUEST, token.getStatusCode());
+
+    }
+
+    @Test
+    @Order(4)
     void getListaUsuarios() {
         List<UserForm> usuarioType = userController.listUser();
         boolean result = usuarioType != null && !usuarioType.isEmpty() ? true : false;
@@ -51,7 +83,7 @@ public class UserControllerTest {
     }
 
     @Test
-    @Order(3)
+    @Order(5)
     void deveDeletarUsuarioComSucesso() throws Exception {
         Integer idUsuario = 1;
         ResponseEntity<UserForm> usuarioDel = userController.deletaUser(idUsuario.longValue());
@@ -61,7 +93,7 @@ public class UserControllerTest {
     }
 
     @Test
-    @Order(4)
+    @Order(6)
     void deletarUsuarioInexistente() throws Exception {
         Integer idUsuario = 1000;
         ResponseEntity<UserForm> usuarioDel = userController.deletaUser(idUsuario.longValue());
