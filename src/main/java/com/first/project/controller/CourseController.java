@@ -45,7 +45,7 @@ public class CourseController {
     @GetMapping("/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<CourseForm> listId(@PathVariable Long id){
+    public ResponseEntity<CourseForm> listCourseId(@PathVariable Long id){
         CourseForm courseForm = courseService.findByIdCourse(id);
         if(courseForm != null) {
             return new ResponseEntity<>(courseForm, null, HttpStatus.OK);
@@ -57,7 +57,7 @@ public class CourseController {
     @PutMapping("/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<CourseForm> updateVeiculo(long id, CourseForm courseForm) {
+    public ResponseEntity<CourseForm> updateCourse(@PathVariable long id,  @Valid @RequestBody CourseForm courseForm) {
         CourseForm course = courseService.updateCourse(id, courseForm);
         if(course != null) {
             return new ResponseEntity<>(course, null, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class CourseController {
     @ResponseBody
     @Transactional
     @Validated
-    public ResponseEntity<CourseForm> deleteCourse(long id) {
+    public ResponseEntity<CourseForm> deleteCourse(@PathVariable long id) {
         CourseForm course = courseService.deleteCourse(id);
         if (course != null) {
             return new ResponseEntity<>(course, null, HttpStatus.OK);

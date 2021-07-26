@@ -34,16 +34,16 @@ public class CourseImpl implements CourseService {
 
     @Override
     public CourseForm findByIdCourse(Long id) {
-        Optional<Course> m1 = courseRepository.findById(id);
-        if (m1.isPresent()) {
-            return CourseForm.convertDomainToType(m1.get());
+        Optional<Course> courseById = courseRepository.findById(id);
+        if (courseById.isPresent()) {
+            return CourseForm.convertDomainToType(courseById.get());
         } else {
             return null;
         }
     }
 
     @Override
-    public CourseForm updateCourse(Long id, CourseForm CourseForm) {
+    public CourseForm updateCourse(Long id, CourseForm courseForm) {
         Optional<Course> courseDomain = courseRepository.findById(id);
         if (courseDomain.isPresent()) {
             Course courseSave = courseDomain.get();

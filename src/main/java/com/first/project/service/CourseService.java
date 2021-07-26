@@ -14,7 +14,7 @@ public interface CourseService {
 
     public CourseForm findByIdCourse(Long id);
 
-    public CourseForm updateCourse(Long id, CourseForm CourseForm);
+    public CourseForm updateCourse(Long id, CourseForm courseForm);
 
     public CourseForm deleteCourse(Long id);
 

@@ -1,11 +1,11 @@
 package com.first.project.domain;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -17,16 +17,20 @@ public class Course {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(min = 2, message = "Deve ter {min} ou mais caracteres.")
+    @NotNull
     private String name;
+
+    public Long getId() {
+        return id;
+    }
 
     public Course() {
 
     }
 
-    public Long getId() {
-        return id;
+    public Course(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public void setId(Long id) {
