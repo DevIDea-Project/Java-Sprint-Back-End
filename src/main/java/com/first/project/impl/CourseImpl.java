@@ -22,14 +22,14 @@ public class CourseImpl implements CourseService {
 
     @Override
     public CourseForm saveCourse(CourseForm courseType) {
-        Course courseSave = courseRepository.save(courseForm.convertTypeToDomain(courseType));
-        return courseForm.convertDomainToType(courseSave);
+        Course courseSave = courseRepository.save(CourseForm.convertTypeToDomain(courseType));
+        return CourseForm.convertDomainToType(courseSave);
     }
 
     @Override
     public List<CourseForm> findAll() {
         List<Course> listCourse = courseRepository.findAll();
-        return courseForm.convertDomainToDto(listCourse);
+        return CourseForm.convertDomainToDto(listCourse);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CourseImpl implements CourseService {
         if (courseDomain.isPresent()) {
             Course courseSave = courseDomain.get();
             courseSave.setName(courseForm.getName());
-            return courseForm.convertDomainToType(courseRepository.saveAndFlush(courseSave));
+            return CourseForm.convertDomainToType(courseRepository.saveAndFlush(courseSave));
         } else {
             return null;
         }
@@ -60,7 +60,7 @@ public class CourseImpl implements CourseService {
         if (course1.isPresent()) {
             Course course2 = course1.get();
             courseRepository.delete(course2);
-            return courseForm.convertDomainToType(course2);
+            return CourseForm.convertDomainToType(course2);
         } else {
             return null;
         }
