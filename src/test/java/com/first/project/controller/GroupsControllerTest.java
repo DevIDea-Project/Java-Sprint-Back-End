@@ -5,6 +5,7 @@ import com.first.project.form.GroupsForm;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ import static org.mockito.MockitoAnnotations.openMocks;
 @SpringBootTest
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@AutoConfigureMockMvc
 @Order(1)
 class GroupsControllerTest {
 
@@ -65,7 +66,7 @@ class GroupsControllerTest {
     @Test
     @Order(5)
     void returnGroupForId() {
-        Integer id = 2;
+        Integer id = 1;
         ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
@@ -81,7 +82,7 @@ class GroupsControllerTest {
     @Test
     @Order(7)
     void returnUpdateGroup() {
-        Integer id = 2;
+        Integer id = 1;
         GroupsForm newGroup = createGroupForm();
         ResponseEntity<GroupsForm> response = groupsController.updateGroup(id.longValue(), newGroup);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -99,7 +100,7 @@ class GroupsControllerTest {
     @Test
     @Order(9)
     void deleteGroup() {
-        Integer id = 2;
+        Integer id = 1;
         ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
@@ -124,8 +125,8 @@ class GroupsControllerTest {
         group.setName("curso 02");
         group.setNameTeacher("Vitor Gabriel");
         CourseForm course = new CourseForm();
-        Integer id = 2;
-        course.setId(id.longValue());
+//        Integer id = 1;
+        course.setId(2L);
         group.setCourse(course);
         return group;
     }
