@@ -45,7 +45,7 @@ class GroupsControllerTest {
         group.setNameTeacher("Vitor Gabriel");
 
         CourseForm course = new CourseForm();
-        Integer id = 2;
+        Integer id = 1;
         course.setId(id.longValue());
         group.setCourse(course);
 
@@ -58,25 +58,22 @@ class GroupsControllerTest {
         Assertions.assertTrue(true);
     }
 
-//    @Test
-//    @Order(2)
-//    void createCourse() {
-//        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("DDO"));
-//        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-//    }
-
     @Test
     @Order(2)
-    void createGroups() {
-        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("TDD"));
+    void createCourse() {
+        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("DDO"));
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
 
+    @Test
+    @Order(3)
+    void createGroups() {
         ResponseEntity<GroupsForm> responses = groupsController.createGroups(createGroupForm());
         assertEquals(HttpStatus.CREATED, responses.getStatusCode());
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     void returnAllCourse() {
         ResponseEntity<List<GroupsForm>> response = groupsController.listGroupes();
         assertEquals(HttpStatus.OK, response.getStatusCode());
