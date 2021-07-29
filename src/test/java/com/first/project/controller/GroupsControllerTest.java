@@ -65,12 +65,12 @@ class GroupsControllerTest {
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
 
-    @Test
-    @Order(3)
-    void createGroups() {
-        ResponseEntity<GroupsForm> response = groupsController.createGroups(createGroupForm());
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-    }
+//    @Test
+//    @Order(3)
+//    void createGroups() {
+//        ResponseEntity<GroupsForm> response = groupsController.createGroups(createGroupForm());
+//        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+//    }
 
     @Test
     @Order(4)
