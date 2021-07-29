@@ -10,5 +10,11 @@ public interface GroupsService {
 
     public GroupsForm saveGroups(GroupsForm groupsForm);
 
+    public GroupsForm findById(Long id);
+
+    public GroupsForm updateCourse(Long id, GroupsForm groupsForm);
+
+    public GroupsForm deleteGroups(Long id);
+
     public List<GroupsForm> findAll();
 }
