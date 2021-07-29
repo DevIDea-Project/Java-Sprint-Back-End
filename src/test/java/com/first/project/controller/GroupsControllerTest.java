@@ -20,22 +20,33 @@ import static org.mockito.MockitoAnnotations.openMocks;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class GroupsControllerTest {
+
     @Autowired
     private GroupsController groupsController;
+
+    @Autowired
+    private CourseController courseController;
 
     @BeforeEach
     void configuraMock() {
         openMocks(this);
     }
 
+    private CourseForm createCourseForm(String name) {
+        CourseForm newCourse = new CourseForm();
+        newCourse.setName(name);
+        return newCourse;
+    }
+
     private GroupsForm createGroupForm() {
         GroupsForm group = new GroupsForm();
 
-        group.setName("curso 01");
-        group.setNameTeacher("Bruno Vinicius");
+        group.setName("curso 02");
+        group.setNameTeacher("Vitor Gabriel");
 
         CourseForm course = new CourseForm();
-        course.setId(2L);
+        Integer id = 2;
+        course.setId(id.longValue());
         group.setCourse(course);
 
         return group;
@@ -47,12 +58,19 @@ class GroupsControllerTest {
         Assertions.assertTrue(true);
     }
 
-//    @Test
-//    @Order(2)
-//    void createGroups() {
-//        ResponseEntity<GroupsForm> response = groupsController.createGroups(createGroupForm());
-//        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-//    }
+    @Test
+    @Order(2)
+    void createCourse() {
+        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("DDO"));
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
+
+    @Test
+    @Order(3)
+    void createGroups() {
+        ResponseEntity<GroupsForm> response = groupsController.createGroups(createGroupForm());
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
 
     @Test
     @Order(4)

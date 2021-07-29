@@ -65,7 +65,7 @@ class CourseControllersTest {
     @Test
     @Order(5)
     void returnCourseForIdNull() {
-        Integer id = 2;
+        Integer id = 3;
         ResponseEntity<CourseForm> response = courseController.listCourseId(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
@@ -82,7 +82,7 @@ class CourseControllersTest {
     @Test
     @Order(7)
     void returnUpdateCourseNull() {
-        Integer id = 2;
+        Integer id = 3;
         CourseForm newCourse = createCourseForm("JavaScript");
         ResponseEntity<CourseForm> response = courseController.updateCourse(id.longValue(), newCourse);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
@@ -99,7 +99,7 @@ class CourseControllersTest {
     @Test
     @Order(9)
     void deleteCourseNull() {
-        Integer id = 2;
+        Integer id = 3;
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
