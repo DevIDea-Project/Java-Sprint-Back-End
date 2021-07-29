@@ -58,22 +58,25 @@ class GroupsControllerTest {
         Assertions.assertTrue(true);
     }
 
-    @Test
-    @Order(2)
-    void createCourse() {
-        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("DDO"));
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-    }
-
 //    @Test
-//    @Order(3)
-//    void createGroups() {
-//        ResponseEntity<GroupsForm> response = groupsController.createGroups(createGroupForm());
+//    @Order(2)
+//    void createCourse() {
+//        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("DDO"));
 //        assertEquals(HttpStatus.CREATED, response.getStatusCode());
 //    }
 
     @Test
-    @Order(4)
+    @Order(2)
+    void createGroups() {
+        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("TDD"));
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+
+        ResponseEntity<GroupsForm> responses = groupsController.createGroups(createGroupForm());
+        assertEquals(HttpStatus.CREATED, responses.getStatusCode());
+    }
+
+    @Test
+    @Order(3)
     void returnAllCourse() {
         ResponseEntity<List<GroupsForm>> response = groupsController.listGroupes();
         assertEquals(HttpStatus.OK, response.getStatusCode());
