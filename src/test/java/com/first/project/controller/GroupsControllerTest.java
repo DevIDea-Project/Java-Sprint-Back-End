@@ -65,50 +65,50 @@ class GroupsControllerTest {
     @Test
     @Order(5)
     void returnGroupForId() {
-//        Integer id = 1;
-        ResponseEntity<GroupsForm> response = groupsController.listGroupId(1L);
+        Integer id = 2;
+        ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(6)
     void returnGroupForIdNull() {
-//        Integer id = 8;
-        ResponseEntity<GroupsForm> response = groupsController.listGroupId(8L);
+        Integer id = 8;
+        ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
     @Order(7)
     void returnUpdateGroup() {
-//        Integer id = 1;
+        Integer id = 2;
         GroupsForm newGroup = createGroupForm();
-        ResponseEntity<GroupsForm> response = groupsController.updateGroup(1L, newGroup);
+        ResponseEntity<GroupsForm> response = groupsController.updateGroup(id.longValue(), newGroup);
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(8)
     void returnUpdateGroupNull() {
-//        Integer id = 7;
+        Integer id = 7;
         GroupsForm newGroup = createGroupForm();
-        ResponseEntity<GroupsForm> response = groupsController.updateGroup(7L, newGroup);
+        ResponseEntity<GroupsForm> response = groupsController.updateGroup(id.longValue(), newGroup);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
     @Order(9)
     void deleteGroup() {
-//        Integer id = 1;
-        ResponseEntity<GroupsForm> response = groupsController.deleteGroup(1L);
+        Integer id = 2;
+        ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(10)
     void deleteGroupNull() {
-//        Integer id = 9;
-        ResponseEntity<GroupsForm> response = groupsController.deleteGroup(9L);
+        Integer id = 9;
+        ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
@@ -121,15 +121,12 @@ class GroupsControllerTest {
 
     private GroupsForm createGroupForm() {
         GroupsForm group = new GroupsForm();
-
         group.setName("curso 02");
         group.setNameTeacher("Vitor Gabriel");
-
         CourseForm course = new CourseForm();
-//        Integer id = 1;
-        course.setId(2L);
+        Integer id = 2;
+        course.setId(id.longValue());
         group.setCourse(course);
-
         return group;
     }
 }
