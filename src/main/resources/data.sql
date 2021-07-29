@@ -17,7 +17,7 @@ INSERT INTO TB_USUARIO (email, nome, senha) VALUES ('furustreca@gmail.com', 'Fur
 
 
 -- Insert for Groups
-INSERT INTO TB_GROUPS (name, nameTeacher, course_id) VALUES ('Curso01', 'Bruno Vinicius', 1);
-INSERT INTO TB_GROUPS (name, nameTeacher, course_id) VALUES ('Curso02', 'Vito Gabriel', 2);
-INSERT INTO TB_GROUPS (name, nameTeacher, course_id) VALUES ('Curso03', 'Maria Clarissa', 3);
-INSERT INTO TB_GROUPS (name, nameTeacher, course_id) VALUES ('Curso04', 'Junior Ramos', 4);
+INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (1, 'TDD', 'Bruno Vinicius');
+INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (2, 'JavaScript', 'Vito Gabriel');
+INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (3, 'Java', 'Maria Clarissa');
+INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (4, 'Banco De Dados', 'Junior Ramos');
