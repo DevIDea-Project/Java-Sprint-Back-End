@@ -126,7 +126,7 @@ class GroupsControllerTest {
         group.setNameTeacher("Vitor Gabriel");
         CourseForm course = new CourseForm();
 //        Integer id = 1;
-        course.setId(1L);
+        course.setId(2L);
         group.setCourse(course);
         return group;
     }
