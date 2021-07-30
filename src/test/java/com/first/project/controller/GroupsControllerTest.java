@@ -43,6 +43,13 @@ class GroupsControllerTest {
     }
 
     @Test
+    @Order(2)
+    void createCourse() {
+        ResponseEntity<CourseForm> response = courseController.create(createCourseForm("DDO"));
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
+
+    @Test
     @Order(3)
     void createGroups() {
         ResponseEntity<GroupsForm> responses = groupsController.createGroups(createGroupForm());
@@ -120,6 +127,12 @@ class GroupsControllerTest {
         Integer id = 1;
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    private CourseForm createCourseForm(String name) {
+        CourseForm newCourse = new CourseForm();
+        newCourse.setName(name);
+        return newCourse;
     }
 
     private GroupsForm createGroupForm() {
