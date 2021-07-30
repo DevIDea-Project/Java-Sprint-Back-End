@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -32,5 +33,43 @@ public class GroupsController {
     @Transactional
     public ResponseEntity<List<GroupsForm>> listGroupes() {
         return new ResponseEntity<>(groupsService.findAll(), null, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<GroupsForm> listGroupId(@PathVariable long id) {
+        GroupsForm groupsForm = groupsService.findById(id);
+        if(groupsForm != null) {
+            return new ResponseEntity<>(groupsForm, null, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(groupsForm, null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<GroupsForm> updateGroup(@PathVariable long id,  @Valid @RequestBody GroupsForm groupsForm) {
+        GroupsForm group = groupsService.updateCourse(id, groupsForm);
+        if(group != null) {
+            return new ResponseEntity<>(group, null, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(group, null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    @Transactional
+    @Validated
+    public ResponseEntity<GroupsForm> deleteGroup(@PathVariable long id) {
+        GroupsForm groups = groupsService.deleteGroups(id);
+        if (groups != null) {
+            return new ResponseEntity<>(groups, null, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(groups, null, HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -26,11 +26,11 @@ public class GroupsForm {
 
     public List<GroupsForm> convertDomainToDto(List<Groups> groups) {
         List<GroupsForm> listaType = new ArrayList<>();
-        groups.forEach(groupsDomain -> listaType.add(convertDomainToType(groupsDomain)));
+        groups.forEach(groupsDomain -> listaType.add(convertDomainToTypeGroup(groupsDomain)));
         return listaType;
     }
 
-    public GroupsForm convertDomainToType(Groups groupsDomain) {
+    public static GroupsForm convertDomainToTypeGroup(Groups groupsDomain) {
         GroupsForm groupsType = new GroupsForm();
         groupsType.setId(groupsDomain.getId());
         groupsType.setName(groupsDomain.getName());
