@@ -24,7 +24,7 @@ public class GroupsForm {
 
     private CourseForm course;
 
-    public List<GroupsForm> convertDomainToDto(List<Groups> groups) {
+    public static List<GroupsForm> convertDomainToDto(List<Groups> groups) {
         List<GroupsForm> listaType = new ArrayList<>();
         groups.forEach(groupsDomain -> listaType.add(convertDomainToTypeGroup(groupsDomain)));
         return listaType;
@@ -44,7 +44,7 @@ public class GroupsForm {
         return groupsType;
     }
 
-    public Groups convertTypeToDomain(GroupsForm groupsType) {
+    public static Groups convertTypeToDomain(GroupsForm groupsType) {
         Groups groupsDomain = new Groups();
         groupsDomain.setId(groupsType.getId());
         groupsDomain.setName(groupsType.getName());
