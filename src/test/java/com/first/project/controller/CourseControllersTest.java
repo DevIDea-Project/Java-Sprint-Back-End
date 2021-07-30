@@ -90,11 +90,20 @@ class CourseControllersTest {
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
+
     @Test
-    @Order(9)
+    @Order(8)
     void deleteCourseNull() {
         Integer id = 9;
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
+//
+//    @Test
+//    @Order(10)
+//    void deleteCourse() {
+//        Integer id = 1;
+//        ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
 }
