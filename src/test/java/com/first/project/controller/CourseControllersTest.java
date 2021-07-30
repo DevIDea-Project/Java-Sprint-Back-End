@@ -91,19 +91,10 @@ class CourseControllersTest {
     }
 
     @Test
-    @Order(8)
-    void deleteCourse() {
-        Integer id = 1;
-        ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
-
-    @Test
     @Order(9)
     void deleteCourseNull() {
         Integer id = 9;
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
-
 }
