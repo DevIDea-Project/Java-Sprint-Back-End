@@ -51,13 +51,6 @@ class GroupsControllerTest {
 
     @Test
     @Order(3)
-    void createGroups() {
-        ResponseEntity<GroupsForm> responses = groupsController.createGroups(createGroupForm());
-        assertEquals(HttpStatus.CREATED, responses.getStatusCode());
-    }
-
-    @Test
-    @Order(4)
     void returnCourseForId() {
         Integer id = 1;
         ResponseEntity<CourseForm> response = courseController.listCourseId(id.longValue());
@@ -65,14 +58,30 @@ class GroupsControllerTest {
     }
 
     @Test
+    @Order(4)
+    void returnUpdateCourse() {
+        Integer id = 1;
+        CourseForm newCourse = createCourseForm("JavaScript");
+        ResponseEntity<CourseForm> response = courseController.updateCourse(id.longValue(), newCourse);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
     @Order(5)
+    void createGroups() {
+        ResponseEntity<GroupsForm> responses = groupsController.createGroups(createGroupForm());
+        assertEquals(HttpStatus.CREATED, responses.getStatusCode());
+    }
+
+    @Test
+    @Order(6)
     void returnAllGroups() {
         ResponseEntity<List<GroupsForm>> response = groupsController.listGroupes();
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     void returnGroupForId() {
         Integer id = 1;
         ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
@@ -80,7 +89,7 @@ class GroupsControllerTest {
     }
 
     @Test
-    @Order(7)
+    @Order(8)
     void returnGroupForIdNull() {
         Integer id = 8;
         ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
@@ -88,7 +97,7 @@ class GroupsControllerTest {
     }
 
     @Test
-    @Order(8)
+    @Order(9)
     void returnUpdateGroup() {
         Integer id = 1;
         GroupsForm newGroup = createGroupForm();
@@ -97,7 +106,7 @@ class GroupsControllerTest {
     }
 
     @Test
-    @Order(9)
+    @Order(10)
     void returnUpdateGroupNull() {
         Integer id = 7;
         GroupsForm newGroup = createGroupForm();
@@ -106,7 +115,7 @@ class GroupsControllerTest {
     }
 
     @Test
-    @Order(10)
+    @Order(11)
     void deleteGroup() {
         Integer id = 1;
         ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
@@ -114,7 +123,7 @@ class GroupsControllerTest {
     }
 
     @Test
-    @Order(11)
+    @Order(12)
     void deleteGroupNull() {
         Integer id = 9;
         ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
@@ -122,7 +131,7 @@ class GroupsControllerTest {
     }
 
     @Test
-    @Order(12)
+    @Order(13)
     void deleteCourse() {
         Integer id = 1;
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());

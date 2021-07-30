@@ -56,13 +56,13 @@ class CourseControllersTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    @Test
-    @Order(4)
-    void returnCourseForId() {
-        Integer id = 1;
-        ResponseEntity<CourseForm> response = courseController.listCourseId(id.longValue());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
+//    @Test
+//    @Order(4)
+//    void returnCourseForId() {
+//        Integer id = 1;
+//        ResponseEntity<CourseForm> response = courseController.listCourseId(id.longValue());
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
 
     @Test
     @Order(5)
@@ -72,14 +72,14 @@ class CourseControllersTest {
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
-    @Test
-    @Order(6)
-    void returnUpdateCourse() {
-        Integer id = 1;
-        CourseForm newCourse = createCourseForm("JavaScript");
-        ResponseEntity<CourseForm> response = courseController.updateCourse(id.longValue(), newCourse);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
+//    @Test
+//    @Order(6)
+//    void returnUpdateCourse() {
+//        Integer id = 1;
+//        CourseForm newCourse = createCourseForm("JavaScript");
+//        ResponseEntity<CourseForm> response = courseController.updateCourse(id.longValue(), newCourse);
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
 
     @Test
     @Order(7)
@@ -98,12 +98,4 @@ class CourseControllersTest {
         ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
-//
-//    @Test
-//    @Order(10)
-//    void deleteCourse() {
-//        Integer id = 1;
-//        ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//    }
 }
