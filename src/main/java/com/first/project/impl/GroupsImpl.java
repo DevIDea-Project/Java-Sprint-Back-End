@@ -21,8 +21,8 @@ public class GroupsImpl implements GroupsService {
 
     @Override
     public GroupsForm saveGroups(GroupsForm groupsForm) {
-        Groups groupSave = groupsRepository.save(groupsForm.convertTypeToDomain(groupsForm));
-        return groupsForm.convertDomainToTypeGroup(groupSave);
+        Groups groupSave = groupsRepository.save(GroupsForm.convertTypeToDomain(groupsForm));
+        return GroupsForm.convertDomainToTypeGroup(groupSave);
     }
 
     @Override
@@ -63,6 +63,6 @@ public class GroupsImpl implements GroupsService {
     @Override
     public List<GroupsForm> findAll() {
         List<Groups> listGroups = groupsRepository.findAll();
-        return groupsForm.convertDomainToDto(listGroups);
+        return GroupsForm.convertDomainToDto(listGroups);
     }
 }
