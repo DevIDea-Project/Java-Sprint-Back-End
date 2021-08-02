@@ -44,7 +44,7 @@ public class GroupsForm {
         return groupsType;
     }
 
-    public static Groups convertTypeToDomain(GroupsForm groupsType) {
+    public static Groups convertTypeToDomainGroups(GroupsForm groupsType) {
         Groups groupsDomain = new Groups();
         groupsDomain.setId(groupsType.getId());
         groupsDomain.setName(groupsType.getName());
