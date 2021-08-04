@@ -21,3 +21,9 @@ INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (1, 'TDD', 'Bruno Vi
 INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (2, 'JavaScript', 'Vito Gabriel');
 INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (3, 'Java', 'Maria Clarissa');
 INSERT INTO TB_GROUPS (course_id, name, nameTeacher) VALUES (4, 'Banco De Dados', 'Junior Ramos');
+
+-- Insert for Student
+INSERT INTO TB_GROUPS (course_id, name, address, phoneNumber) VALUES (1, 'Bruno', 'Rua Poloni', '56789098765');
+INSERT INTO TB_GROUPS (course_id, name, address, phoneNumber) VALUES (2, 'Clarissa', 'Rua 2', '8798797099');
+INSERT INTO TB_GROUPS (course_id, name, address, phoneNumber) VALUES (3, 'Vitor', 'Rua 3', '65576253986391');
+INSERT INTO TB_GROUPS (course_id, name, address, phoneNumber) VALUES (4, 'Margarida', 'Rua 4', '765633689319333');
