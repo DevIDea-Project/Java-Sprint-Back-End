@@ -1,7 +1,6 @@
 package com.first.project.form;
 
 import com.first.project.domain.Course;
-import com.first.project.domain.Groups;
 import com.first.project.domain.Student;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +19,6 @@ public class StudentForm {
     private String address;
     private String phoneNumber;
     private CourseForm course;
-    private GroupsForm groups;
 
 
     public static List<StudentForm> convertDomainToDto(List<Student> student) {
@@ -42,12 +40,6 @@ public class StudentForm {
         courseDomain.setName(studentDomain.getCourse().getName());
         studentType.setCourse(courseDomain);
 
-        GroupsForm groupsDomain = new GroupsForm();
-        groupsDomain.setId(studentDomain.getGroups().getId());
-        groupsDomain.setName(studentDomain.getGroups().getName());
-        groupsDomain.setNameTeacher(studentDomain.getGroups().getNameTeacher());
-        studentType.setGroups(groupsDomain);
-
         return studentType;
     }
 
@@ -61,10 +53,6 @@ public class StudentForm {
         Course courseDomain = new Course();
         courseDomain.setId(studentType.getCourse().getId());
         studentDomain.setCourse(courseDomain);
-
-        Groups groupDomain = new Groups();
-        studentDomain.setId(studentType.getGroups().getId());
-        studentDomain.setGroups(groupDomain);
 
         return studentDomain;
     }

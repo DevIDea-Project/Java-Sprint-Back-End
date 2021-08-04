@@ -32,10 +32,6 @@ public class Student {
     @JoinColumn(name="course_id", nullable = false)
     private Course course;
 
-    @ManyToOne()
-    @JoinColumn(name="groups_id", nullable = false)
-    private Groups groups;
-
     public Course getCourse() {
         return course;
     }

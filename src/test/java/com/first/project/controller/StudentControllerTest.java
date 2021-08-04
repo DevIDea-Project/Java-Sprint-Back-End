@@ -1,7 +1,7 @@
 package com.first.project.controller;
 
 import com.first.project.form.CourseForm;
-import com.first.project.form.GroupsForm;
+import com.first.project.form.StudentForm;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -22,10 +22,10 @@ import static org.mockito.MockitoAnnotations.openMocks;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @AutoConfigureMockMvc
 @Order(1)
-class GroupsControllerTest {
+class StudentControllerTest {
 
     @Autowired
-    private GroupsController groupsController;
+    private StudentController studentController;
 
     @Autowired
     private CourseController courseController;
@@ -34,7 +34,6 @@ class GroupsControllerTest {
     void configuraMock() {
         openMocks(this);
     }
-
 
     @Test
     @Order(1)
@@ -68,90 +67,94 @@ class GroupsControllerTest {
 
     @Test
     @Order(5)
-    void createGroups() {
-        ResponseEntity<GroupsForm> responses = groupsController.createGroups(createGroupForm());
-        assertEquals(HttpStatus.CREATED, responses.getStatusCode());
+    void createStudent() {
+        ResponseEntity<StudentForm> response = studentController.createStudent(createStudentForm());
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
 
     @Test
     @Order(6)
-    void returnAllGroups() {
-        ResponseEntity<List<GroupsForm>> response = groupsController.listGroupes();
+    void returnAllStudent() {
+        ResponseEntity<List<StudentForm>> response = studentController.listStudent();
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(7)
-    void returnGroupForId() {
+    void returnStudentForId() {
         Integer id = 1;
-        ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
+        ResponseEntity<StudentForm> response = studentController.listStudentId(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(8)
-    void returnGroupForIdNull() {
+    void returnStudentForIdNull() {
         Integer id = 8;
-        ResponseEntity<GroupsForm> response = groupsController.listGroupId(id.longValue());
+        ResponseEntity<StudentForm> response = studentController.listStudentId(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
     @Order(9)
-    void returnUpdateGroup() {
+    void returnUpdateStudent() {
         Integer id = 1;
-        GroupsForm newGroup = createGroupForm();
-        ResponseEntity<GroupsForm> response = groupsController.updateGroup(id.longValue(), newGroup);
+        StudentForm newStudent = createStudentForm();
+        ResponseEntity<StudentForm> response = studentController.updateStudent(id.longValue(), newStudent);
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(10)
-    void returnUpdateGroupNull() {
+    void returnUpdateStudentNull() {
         Integer id = 7;
-        GroupsForm newGroup = createGroupForm();
-        ResponseEntity<GroupsForm> response = groupsController.updateGroup(id.longValue(), newGroup);
+        StudentForm newStudent = createStudentForm();
+        ResponseEntity<StudentForm> response = studentController.updateStudent(id.longValue(), newStudent);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
     @Order(11)
-    void deleteGroup() {
+    void deleteStudent() {
         Integer id = 1;
-        ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
+        ResponseEntity<StudentForm> response = studentController.deleteStudent(id.longValue());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     @Order(12)
-    void deleteGroupNull() {
+    void deleteStudentNull() {
         Integer id = 9;
-        ResponseEntity<GroupsForm> response = groupsController.deleteGroup(id.longValue());
+        ResponseEntity<StudentForm> response = studentController.deleteStudent(id.longValue());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
-//    @Test
-//    @Order(13)
-//    void deleteCourse() {
-//        Integer id = 1;
-//        ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//    }
+    @Test
+    @Order(13)
+    void deleteCourse() {
+        Integer id = 1;
+        ResponseEntity<CourseForm> response = courseController.deleteCourse(id.longValue());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+
+    private StudentForm createStudentForm() {
+        StudentForm newStudent = new StudentForm();
+        newStudent.setName("Curso 01");
+        newStudent.setAddress("Rua Poloni 268");
+        newStudent.setPhoneNumber("7897987987989");
+
+        CourseForm course = new CourseForm();
+        Integer id = 1;
+        course.setId(id.longValue());
+        newStudent.setCourse(course);
+
+        return newStudent;
+    }
 
     private CourseForm createCourseForm(String name) {
         CourseForm newCourse = new CourseForm();
         newCourse.setName(name);
         return newCourse;
-    }
-
-    private GroupsForm createGroupForm() {
-        GroupsForm group = new GroupsForm();
-        group.setName("TDD");
-        group.setNameTeacher("Bruno Vinicius");
-        CourseForm course = new CourseForm();
-        Integer id = 1;
-        course.setId(id.longValue());
-        group.setCourse(course);
-        return group;
     }
 }
